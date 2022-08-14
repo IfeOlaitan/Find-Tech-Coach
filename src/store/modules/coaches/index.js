@@ -38,6 +38,17 @@ export default {
                         ' company, I can help you get your first job or progress in your current role.',
                     hourlyRate: 35,
                     img: "https://images.unsplash.com/photo-1598343672916-de13ab0636ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=830&q=80"
+                },
+                {
+                    id: 'c4',
+                    firstName: 'Maria',
+                    lastName: 'Adewale',
+                    areas: ['frontend', 'backend', 'career', 'design'],
+                    description:
+                        'I am Maria and as a senior developer in a big tech' +
+                        ' company, I can help you get your first job or progress in your current role.',
+                    hourlyRate: 60,
+                    img: "https://images.unsplash.com/photo-1533674639815-52f8aea1b132?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
                 }
             ]
         }
