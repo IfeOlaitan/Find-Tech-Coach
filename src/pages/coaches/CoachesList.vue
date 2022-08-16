@@ -1,6 +1,6 @@
 <template>
   <div class="container max-w-default-max mx-auto">
-    <section>
+    <div>
       <h2
           class="capitalize text-primary-blue text-xl font-bold text-center pt-8 pb-5"
       >
@@ -18,8 +18,8 @@
           Register as Coach
         </base-button>
       </div>
-    </section>
-    <section>
+    </div>
+    <div>
       <div class="mb-9">
         <button>Filter Coaches</button>
       </div>
@@ -44,7 +44,7 @@
 
         <h3 v-else>No coaches found</h3>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
