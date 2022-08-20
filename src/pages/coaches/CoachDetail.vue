@@ -41,7 +41,7 @@
           <base-button
               link mode="flat"
               :to="contactLink"
-              class="w-full"
+              class="w-40"
           >
             Contact Coach
           </base-button>
