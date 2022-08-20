@@ -14,6 +14,7 @@
             link
             mode="flat"
             to="/register"
+            v-if="!isCoach"
         >
           Register as Coach
         </base-button>
@@ -70,6 +71,9 @@ export default {
     }
   },
   computed: {
+    isCoach() {
+      return this.$store.getters['coaches/isCoach'];
+    },
     filteredCoaches() {
       const coaches = this.$store.getters['coaches/coaches'];
 
