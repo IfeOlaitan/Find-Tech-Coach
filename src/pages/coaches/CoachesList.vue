@@ -21,7 +21,7 @@
     </div>
     <div>
       <div class="mb-9">
-        <button>Filter Coaches</button>
+        <coach-filter @change-filter="setFilters"></coach-filter>
       </div>
       <div class="mb-12">
         <h3 class="text-base font-semibold text-primary-blue mb-5">Available
@@ -51,18 +51,55 @@
 <script>
 import CoachCard from "@/components/coaches/CoachCard";
 import BaseButton from "@/components/ui/BaseButton";
+import CoachFilter from "@/components/coaches/CoachFilter"
 
 export default {
   components: {
     BaseButton,
-    CoachCard
+    CoachCard,
+    CoachFilter
+  },
+  data() {
+    return {
+      activeFilters: {
+        frontend: true,
+        backend: true,
+        design: true,
+        career: true
+      }
+    }
   },
   computed: {
     filteredCoaches() {
-      return this.$store.getters['coaches/coaches'];
+      const coaches = this.$store.getters['coaches/coaches'];
+
+      return coaches.filter(coach => {
+        if (this.activeFilters.frontend && coach.areas.includes('frontend')) {
+          return true;
+        }
+
+        if (this.activeFilters.backend && coach.areas.includes('backend')) {
+          return true;
+        }
+
+        if (this.activeFilters.design && coach.areas.includes('design')) {
+          return true;
+        }
+
+        if (this.activeFilters.career && coach.areas.includes('career')) {
+          return true;
+        }
+
+        return false;
+      })
     },
     hasCoaches() {
       return this.$store.getters['coaches/hasCoaches'];
+    }
+  },
+  methods: {
+    setFilters(updatedFilters) {
+      this.activeFilters = updatedFilters
     }
   }
 }
