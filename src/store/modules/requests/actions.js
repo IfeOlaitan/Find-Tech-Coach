@@ -2,7 +2,7 @@ export default {
     contactCoachData(context, formData) {
         const newRequest = {
             id: new Date().toISOString(),
-            coachId: formData.id,
+            coachId: formData.coachId,
             userName: formData.name,
             userEmail: formData.email,
             userMobile: formData.mobile,
