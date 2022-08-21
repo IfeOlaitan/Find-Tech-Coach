@@ -7,6 +7,7 @@ import './assets/tailwind.css';
 
 import BaseBadge from '@/components/ui/BaseBadge.vue';
 import BaseButton from '@/components/ui/BaseButton.vue'
+import LoadingSpinner from '@/components/ui/LoadingSpinner.vue';
 
 const app = createApp(App);
 
@@ -15,5 +16,6 @@ app.use(store);
 
 app.component('base-badge', BaseBadge);
 app.component('base-button', BaseButton);
+app.component('loading-spinner', LoadingSpinner);
 
 app.mount('#app');

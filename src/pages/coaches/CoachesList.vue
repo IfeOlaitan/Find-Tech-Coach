@@ -14,7 +14,7 @@
             link
             mode="flat"
             to="/register"
-            v-if="!isCoach"
+            v-if="!isCoach && !isLoading"
         >
           Register as Coach
         </base-button>
@@ -25,9 +25,13 @@
         <coach-filter @change-filter="setFilters"></coach-filter>
       </div>
       <div class="mb-12">
-        <h3 class="text-base font-semibold text-primary-blue mb-5">Available
-          Coaches</h3>
-        <ul v-if="hasCoaches" class="grid grid-cols-4 gap-x-8 gap-y-12">
+        <h3 class="text-base font-semibold text-primary-blue mb-5">Available Coaches</h3>
+
+        <div v-if="isLoading">
+          <loading-spinner></loading-spinner>
+        </div>
+
+        <ul v-else-if="hasCoaches" class="grid grid-cols-4 gap-x-8 gap-y-12">
           <!--      <li v-for="coach in filteredCoaches" :key="coach.id">-->
           <!--        <p class="text-base">{{ coach.firstName }}</p>-->
           <!--        <img :src="coach.img" alt="">-->
@@ -43,7 +47,7 @@
           ></coach-card>
         </ul>
 
-        <h3 v-else>No coaches found</h3>
+        <h3 v-else class="text-center">No coaches found</h3>
       </div>
     </div>
   </div>
@@ -53,7 +57,6 @@
 import CoachCard from "@/components/coaches/CoachCard";
 import BaseButton from "@/components/ui/BaseButton";
 import CoachFilter from "@/components/coaches/CoachFilter"
-
 export default {
   components: {
     BaseButton,
@@ -62,6 +65,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       activeFilters: {
         frontend: true,
         backend: true,
@@ -98,7 +102,7 @@ export default {
       })
     },
     hasCoaches() {
-      return this.$store.getters['coaches/hasCoaches'];
+      return !this.isLoading && this.$store.getters['coaches/hasCoaches'];
     }
   },
   created() {
@@ -108,8 +112,10 @@ export default {
     setFilters(updatedFilters) {
       this.activeFilters = updatedFilters
     },
-    loadCoaches() {
-      this.$store.dispatch('coaches/loadCoaches');
+    async loadCoaches() {
+      this.isLoading = true;
+      await this.$store.dispatch('coaches/loadCoaches');
+      this.isLoading = false;
     }
   }
 }
