@@ -140,7 +140,7 @@ export default {
     submitForm() {
       this.formIsValid = true;
 
-      if(
+      if (
           this.email === '' ||
           !this.email.includes("@") ||
           this.mobile === '' ||
@@ -149,14 +149,17 @@ export default {
         this.formIsValid = false;
       }
 
-      this.$store.dispatch('requests/contactCoachData', {
-        coachId: this.$route.params.id,
-        name: this.name,
-        email: this.email,
-        mobile: this.mobile,
-        message: this.message
-      });
-      this.$router.replace('/coaches');
+      if (this.formIsValid) {
+        this.$store.dispatch('requests/contactCoachData', {
+          coachId: this.$route.params.id,
+          name: this.name,
+          email: this.email,
+          mobile: this.mobile,
+          message: this.message
+        });
+
+        this.$router.replace('/coaches');
+      }
     }
 
   }
