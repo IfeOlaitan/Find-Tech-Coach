@@ -1,4 +1,7 @@
 <template>
+  <base-dialog :show="!!error" title="An Error Occured" @close="closeModal">
+    <p>{{ error }}</p>
+  </base-dialog>
   <div class="container max-w-default-max mx-auto">
     <div>
       <h2
@@ -57,8 +60,10 @@
 import CoachCard from "@/components/coaches/CoachCard";
 import BaseButton from "@/components/ui/BaseButton";
 import CoachFilter from "@/components/coaches/CoachFilter"
+import BaseDialog from "@/components/ui/BaseDialog";
 export default {
   components: {
+    BaseDialog,
     BaseButton,
     CoachCard,
     CoachFilter
@@ -66,6 +71,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      error: null,
       activeFilters: {
         frontend: true,
         backend: true,
@@ -114,8 +120,16 @@ export default {
     },
     async loadCoaches() {
       this.isLoading = true;
-      await this.$store.dispatch('coaches/loadCoaches');
+
+      try {
+        await this.$store.dispatch('coaches/loadCoaches');
+      } catch (error) {
+        this.error = error.message || 'Something went wrong';
+      }
       this.isLoading = false;
+    },
+    closeModal() {
+      this.error = null;
     }
   }
 }
