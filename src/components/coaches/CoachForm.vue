@@ -230,30 +230,37 @@ export default {
 .form-control {
   @apply flex flex-col py-2.5;
 }
+
 .form-input, .textarea-input {
   @apply bg-white border border-slate-300 rounded-md focus:outline-none
   focus:border-blue-500 focus:ring-1 text-base text-slate-600 invalid:border-pink-500
   ;
 }
+
 .input-label {
   @apply text-sm text-slate-400 mb-1;
 }
+
 .checkbox-label {
   @apply text-sm text-slate-700;
 }
+
 .checkbox-input {
   @apply border border-slate-400 checked:bg-green-500 focus:bg-green-200
   text-green-500 outline-0 rounded-sm h-4 w-4 focus:ring-0;
 }
+
 .file-input {
   @apply block text-sm text-slate-500 file:mr-2 file:py-2 file:px-4
   file:rounded-full file:rounded-full file:border-0 file:text-sm
   file:font-semibold file:bg-blue-50 file:text-primary-blue
   hover:file:bg-blue-100 focus:outline-none;
 }
+
 .invalid {
   @apply text-red-500 text-xs border-red-400;
 }
+
 .inputInvalid {
   @apply border-red-300;
 }

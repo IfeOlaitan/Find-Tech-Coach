@@ -23,7 +23,10 @@ const router = createRouter({
         { path: '/register', component: CoachRegistration },
         { path: '/requests', component: RequestsReceived },
         { path: '/:notFound(.*)', component: NotFound },
-        { path: '/coaches/:id/contact', component: ContactCoach }
+        { path: '/coaches/:id/contact',
+          component: ContactCoach ,
+          props: true
+        }
     ]
 });
 
