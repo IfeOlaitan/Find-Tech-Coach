@@ -1,6 +1,6 @@
 <template>
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-       style="margin: auto; display: block; shape-rendering: auto;" width="100px" height="100px"
+       style="margin: auto; display: block; shape-rendering: auto;" width="50px" height="50px"
        viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
     <g transform="translate(80,50)">
       <g transform="rotate(0)">
